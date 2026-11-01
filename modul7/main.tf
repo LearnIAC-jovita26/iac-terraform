@@ -20,8 +20,9 @@ resource "azurerm_resource_group" "main" {
   location = var.location
 
   tags = {
-    student = var.student_id
-    course  = "iac"
+    student    = var.student_id
+    course     = "iac"
+    managed_by = "pipeline"
   }
 }
 
@@ -31,3 +32,4 @@ module "network" {
   location            = azurerm_resource_group.main.location
   resource_group_name = azurerm_resource_group.main.name
 }
+
