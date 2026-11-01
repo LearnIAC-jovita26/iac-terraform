@@ -4,3 +4,7 @@ locals {
 
   resource_group_name = "${local.name_prefix}-rg"
 }
+
+locals {
+  ikke_formatert = 1
+}
