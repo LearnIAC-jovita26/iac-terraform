@@ -6,5 +6,5 @@ locals {
 }
 
 locals {
-    ikke_formatert   =   1
+  ikke_formatert = 1
 }
