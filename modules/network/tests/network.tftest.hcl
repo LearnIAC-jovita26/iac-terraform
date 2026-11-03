@@ -10,7 +10,7 @@ run "subnettene_har_riktig_cidr" {
   command = plan
 
   assert {
-    condition     = contains(azurerm_subnet.this.address_prefixes, "10.0.1.0/24")
+    condition     = contains(azurerm_subnet.app.address_prefixes, "10.0.1.0/24")
     error_message = "Subnettet this skal ha 10.0.1.0/24."
   }
 
@@ -29,7 +29,7 @@ run "navnene_bruker_prefikset" {
   }
 
   assert {
-    condition     = azurerm_subnet.this.name == "test-snet"
+    condition     = azurerm_subnet.app.name == "test-snet"
     error_message = "Subnettet this skal hete <prefiks>-snet."
   }
 
@@ -61,3 +61,4 @@ run "ssh_er_ikke_aapen_mot_internett" {
     error_message = "SSH (port 22) må ikke være åpen mot hele internett."
   }
 }
+

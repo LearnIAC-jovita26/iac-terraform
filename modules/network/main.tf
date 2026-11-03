@@ -5,7 +5,7 @@ resource "azurerm_virtual_network" "this" {
   resource_group_name = var.resource_group_name
 }
 
-resource "azurerm_subnet" "this" {
+resource "azurerm_subnet" "app" {
   name                 = "${var.name_prefix}-snet"
   resource_group_name  = var.resource_group_name
   virtual_network_name = azurerm_virtual_network.this.name
@@ -38,7 +38,13 @@ resource "azurerm_network_security_group" "this" {
 }
 
 resource "azurerm_subnet_network_security_group_association" "this" {
-  subnet_id                 = azurerm_subnet.this.id
+  subnet_id                 = azurerm_subnet.app.id
   network_security_group_id = azurerm_network_security_group.this.id
 }
 
+
+
+moved {
+  from = azurerm_subnet.this
+  to   = azurerm_subnet.app
+}
